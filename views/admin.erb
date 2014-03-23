@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="js/codemirror.js"></script>
+    <script src="js/codemirror/xml.js"></script>
+    <script src="js/codemirror/javascript.js"></script>
+    <script src="js/codemirror/css.js"></script>
+    <script src="js/codemirror/htmlmixed.js"></script>
+    <link rel="stylesheet" href="css/codemirror.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <title>Admin</title>
+  </head>
+  <body>
+
+    <form action="save" method="post">
+
+      <textarea id="myText" name='page' class='code'>
+        <%= @redis.get("index.html") %>
+      </textarea>
+      <br />
+      <input type="submit" class="button" value="Save">
+    </form>
+
+
+    <script type="text/javascript">
+        var myTextArea = document.getElementById('myText');
+        var myCodeMirror = CodeMirror.fromTextArea(myTextArea, {
+          mode:  "htmlmixed",
+          lineNumbers: true,
+          viewportMargin: Infinity
+        });
+    </script>
+
+  </body>
+</html>
